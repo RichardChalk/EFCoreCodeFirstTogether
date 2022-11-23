@@ -3,6 +3,6 @@
 3: Installera alla nuget paket (matchar version)
 	Microsoft.EntityFrameworkCore.SqlServer
 	Microsoft.EntityFrameworkCore.Tools
-	Microsoft.Extensions.Configuration nuget paket
+													Microsoft.Extensions.Configuration nuget paket
 	Microsoft.Extensions.Configuration.json nuget paket
-4: 
+4: Create json builder
