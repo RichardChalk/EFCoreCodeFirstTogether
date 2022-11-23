@@ -42,7 +42,7 @@ namespace EFCoreCodeFirstTogether
             {
                 Console.WriteLine("(C)REATE en ny person");
                 Console.WriteLine("=====================");
-                
+
                 Console.WriteLine("Ange namn: ");
                 var nameInput = Console.ReadLine();
 
@@ -58,7 +58,7 @@ namespace EFCoreCodeFirstTogether
                 }
                 Console.WriteLine("Ange Id på County");
                 var countyId = Convert.ToInt32(Console.ReadLine());
-                var countyInput = dbContext.County.First(c=>c.Id == countyId);
+                var countyInput = dbContext.County.First(c => c.Id == countyId);
 
                 dbContext.Person.Add(new Person
                 {
@@ -69,6 +69,18 @@ namespace EFCoreCodeFirstTogether
                 });
                 dbContext.SaveChanges();
             }
+
+            // READ READ READ READ READ READ READ READ READ READ READ READ READ READ
+            using (var dbContext = new ApplicationDbContext(options.Options))
+            {
+                foreach (var person in dbContext.Person)
+                {
+                    Console.WriteLine($"Namn: {person.Name}");
+                    Console.WriteLine($"Ålder: {person.Age}");
+                    Console.WriteLine("====================");
+                }
+            }
+
         }
     }
 }
