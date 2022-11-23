@@ -5,8 +5,9 @@
 	Microsoft.EntityFrameworkCore.Tools
 													Microsoft.Extensions.Configuration nuget paket
 	Microsoft.Extensions.Configuration.json nuget paket
-4: Create json builder
+4: Create json builder (boiler plate code)
 5: Create 'Data' folder. Create classes.
+6: Create DBContext (boiler plate code). Create options & connectionstring variables (boiler plate code).
 
 
 
