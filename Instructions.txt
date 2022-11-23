@@ -154,6 +154,12 @@ Jag måste nog köra INCLUDE för att få se datat....
 18: Vi ger användaren möjlighet att uppdatera befintliga personer som finns i vår databas
 
 
+** **************************************************************************************
+(D)ELETE
+** **************************************************************************************
+19: Vi ger användaren möjlighet att radera befintliga personer som finns i vår databas
+
+
 
 
 
