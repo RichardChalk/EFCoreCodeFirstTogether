@@ -3,13 +3,24 @@
 3: Installera alla nuget paket (matchar version)
 	Microsoft.EntityFrameworkCore.SqlServer
 	Microsoft.EntityFrameworkCore.Tools
-													Microsoft.Extensions.Configuration nuget paket
-	Microsoft.Extensions.Configuration.json nuget paket
+	Microsoft.Extensions.Configuration.json
 4: Create json builder (boiler plate code)
 5: Create 'Data' folder. Create classes.
 6: Create DBContext (boiler plate code). Create options & connectionstring variables (boiler plate code).
 7a: Kör i console add-migration "Initial migration"
 7b: Migrate DbSets to SQL tabeller
+
+** **************************************************************************************
+Nu är din databs skapad och du har tillgång till datat via din DbContext 
+Här skulle du kunna skapa en kopia av projektet och använder den som en template
+De saker som man behöver ändra på om man ska använda denna template till ett nytt projekt är:
+	a: Ändra namnet på databasen i din appsettings.json
+	b: Ändra namnet på databasen i din dbContext (OnConfiguring metod)
+	c: Ändra klasserna så att de matchar din nya databas
+	d: Radera mappen som heter "Migrations"
+	e: Kör add-migration "Initial migration" igen
+That's it!!!
+** **************************************************************************************
 
 
 
