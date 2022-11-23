@@ -182,6 +182,7 @@ Undrar om vi kan kalla mappen för Controllers. tex.
 
 Controllers =>
 		Build
+		Main Menu
 		Create
 		Read
 		Update
