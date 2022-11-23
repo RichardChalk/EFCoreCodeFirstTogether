@@ -148,6 +148,11 @@ OBS: Även om du skulle av misstag ta bort data i County
 Jag måste nog köra INCLUDE för att få se datat....
 
 
+** **************************************************************************************
+(U)PDATE
+** **************************************************************************************
+18: Vi ger användaren möjlighet att uppdatera befintliga personer som finns i vår databas
+
 
 
 
