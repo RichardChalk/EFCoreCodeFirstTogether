@@ -111,7 +111,7 @@ INFO: Rita ut en databas diagram från SMMS
 
 
 ** **************************************************************************************
-Seed data
+Best practise
 ** **************************************************************************************
 13: Create a new class 'DataInitializer' med en Metod som heter 'MigrateAnsSeed(dbContext)'
 
@@ -119,6 +119,30 @@ Seed data
 Nu kan vi flytta raden i vår Application class 
 	dbContext.Database.Migrate();
 Till vår nya metod som heter MigrateAndSeed(dbContext)
+
+
+** **************************************************************************************
+SEED Data (Stödtabell - County)
+** **************************************************************************************
+14: Fyll på stödtabellen 'County'.
+
+INFO: Kör din app med F5. Kolla nu på din databas... 
+Ser du att det finns data i County tabellen numera? Coooolt!
+
+Varje gång din app körs så kommer detta data att skapas (om det inte finns redan!)
+OBS: Även om du skulle av misstag ta bort data i County
+
+
+** **************************************************************************************
+CREATE
+** **************************************************************************************
+15: 
+
+
+
+
+
+
 
 
 
