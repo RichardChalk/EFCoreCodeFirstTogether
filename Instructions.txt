@@ -134,9 +134,15 @@ OBS: Även om du skulle av misstag ta bort data i County
 
 
 ** **************************************************************************************
-CREATE
+(C)REATE
 ** **************************************************************************************
-15: 
+15: Vi ger användaren möjlighet att skapa nya personer och lägger till de i databasen
+
+
+** **************************************************************************************
+(R)EAD
+** **************************************************************************************
+16: Vi ger användaren möjlighet att se alla personer som finns i vår databas
 
 
 
