@@ -176,12 +176,16 @@ B: Då behöver vi säkert lägger de olika delar i varsin metod()? tex.
 
 C: SRP!!! 
 Vår Application class gör väldigt mycket just nu.
-Vi kanske ska splittra på det lite och lägger det i flera klasser. Tex.
-	Build
-	Create
-	Read
-	Update
-	Delete
+Vi kanske ska splittra på det lite och lägger det i flera klasser.
+Det vore smart om de fanns i en ny mapp också...
+Undrar om vi kan kalla mappen för Controllers. tex.
+
+Controllers =>
+		Build
+		Create
+		Read
+		Update
+		Delete
 
 
 
