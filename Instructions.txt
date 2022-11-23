@@ -6,3 +6,20 @@
 													Microsoft.Extensions.Configuration nuget paket
 	Microsoft.Extensions.Configuration.json nuget paket
 4: Create json builder
+5: Create 'Data' folder. Create classes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+github länk: https://github.com/RichardChalk/EFCoreCodeFirstTogether
