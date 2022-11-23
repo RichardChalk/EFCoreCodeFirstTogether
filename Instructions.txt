@@ -21,7 +21,7 @@ De saker som man behöver ändra på om man ska använda denna template till ett
 	e: Kör add-migration "Initial migration" igen
 That's it!!!
 ** **************************************************************************************
-
+8: Vill vill lämna 'Main' static class och jobbar i vår egen class som heter 'Application'
 
 
 
