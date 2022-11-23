@@ -9,6 +9,7 @@ namespace EFCoreCodeFirstTogether.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        // 6: Create DBContext(boiler plate code). Create options & connectionstring variables(boiler plate code).
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

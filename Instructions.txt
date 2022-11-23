@@ -8,6 +8,7 @@
 4: Create json builder (boiler plate code)
 5: Create 'Data' folder. Create classes.
 6: Create DBContext (boiler plate code). Create options & connectionstring variables (boiler plate code).
+7: Migrate DbSets to SQL tabeller
 
 
 
