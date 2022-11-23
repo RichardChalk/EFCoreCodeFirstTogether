@@ -30,7 +30,11 @@ namespace EFCoreCodeFirstTogether
             // Om inte databasen redan finns... så skapas den nu.
             using (var dbContext = new ApplicationDbContext(options.Options))
             {
-                dbContext.Database.Migrate();
+                var dataInitiaizer = new DatainItializer();
+                dataInitiaizer.MigrateAndSeed(dbContext);
+                
+                // Migrate har flyttats till dataInitializer class (BEST PRACTISE)
+                // dbContext.Database.Migrate();
             }
         }
     }

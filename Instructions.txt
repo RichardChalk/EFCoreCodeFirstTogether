@@ -113,6 +113,12 @@ INFO: Rita ut en databas diagram från SMMS
 ** **************************************************************************************
 Seed data
 ** **************************************************************************************
+13: Create a new class 'DataInitializer' med en Metod som heter 'MigrateAnsSeed(dbContext)'
+
+(BEST PRACTISE)
+Nu kan vi flytta raden i vår Application class 
+	dbContext.Database.Migrate();
+Till vår nya metod som heter MigrateAndSeed(dbContext)
 
 
 
