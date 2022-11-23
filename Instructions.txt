@@ -63,7 +63,7 @@ När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare
 
 
 ** **************************************************************************************
-Lägg till en kolumn
+Lägg till en kolumn i en befintlig tabell
 ** **************************************************************************************
 10: Vi lägger till en kolumn i 'Person' classen. tex:
 ShoeSize	[Range(1,60)]
@@ -71,6 +71,21 @@ ShoeSize	[Range(1,60)]
 Kom ihåg! Nu har vi ändrat på vår databas!
 Då måste vi köra en ny add-migration.. .tex:
 add-migration "Added ShoeSize to person"
+
+När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
+	dbContext.Database.Migrate();
+
+
+** **************************************************************************************
+Lägg till en ny tabell
+** **************************************************************************************
+11: Vi lägger till en tabell (C# class) som heter 'County'
+
+Lägg till 'County' som en DbSet<> i din dbcontext
+
+Kom ihåg! Nu har vi ändrat på vår databas!
+Då måste vi köra en ny add-migration.. .tex:
+add-migration "Added County table"
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
