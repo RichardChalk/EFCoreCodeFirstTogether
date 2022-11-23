@@ -1,3 +1,8 @@
 1: Skapa en console app
 2: Lägg till appsettings.json. Uppdatera databas namnet. Kom ihåg property "Copy if newer"
-3:
+3: Installera alla nuget paket (matchar version)
+	Microsoft.EntityFrameworkCore.SqlServer
+	Microsoft.EntityFrameworkCore.Tools
+	Microsoft.Extensions.Configuration nuget paket
+	Microsoft.Extensions.Configuration.json nuget paket
+4: 
