@@ -1,3 +1,6 @@
+** **************************************************************************************
+Standard inställningar
+** **************************************************************************************
 1: Skapa en console app
 2: Lägg till appsettings.json. Uppdatera databas namnet. Kom ihåg property "Copy if newer"
 3: Installera alla nuget paket (matchar version)
@@ -10,8 +13,11 @@
 7a: Kör i console add-migration "Initial migration"
 7b: Migrate DbSets to SQL tabeller
 
+
 ** **************************************************************************************
-Nu är din databs skapad och du har tillgång till datat via din DbContext 
+Template
+** **************************************************************************************
+INFO: Nu är din databas skapad och du har tillgång till datat via din DbContext 
 Här skulle du kunna skapa en kopia av projektet och använder den som en template
 De saker som man behöver ändra på om man ska använda denna template till ett nytt projekt är:
 	a: Ändra namnet på databasen i din appsettings.json
@@ -20,10 +26,59 @@ De saker som man behöver ändra på om man ska använda denna template till ett
 	d: Radera mappen som heter "Migrations"
 	e: Kör add-migration "Initial migration" igen
 That's it!!!
+
+
 ** **************************************************************************************
-8: Vill vill lämna 'Main' static class och jobbar i vår egen class som heter 'Application'
+Best practise
+** **************************************************************************************
+8: Vi vill lämna 'Main' static class och jobbar i vår egen class som heter 'Application'
 
 
+** **************************************************************************************
+add-migration
+** **************************************************************************************
+INFO: Varje gång vi vill ändra i vår databas (add kolumn eller tabell) måste vi köra tex:
+	add-migration "Column added"
+EF Core är så kraftfull att den skapar en ny migration och lägga till det som är tillagd
+i vår databas. Den är så smart att den kör ENDAST de saker som är nya....
+
+
+** **************************************************************************************
+Attributes
+** **************************************************************************************
+https://learn.microsoft.com/en-us/ef/core/modeling/entity-properties?tabs=data-annotations%2Cwithout-nrt
+INFO: Attributes hjälper oss att bestämma hur våra kolumner ska se ut (vilka properties de har)
+
+9: Create some attributes for our table columns tex.
+Name	[Required] [MaxLength(100)]
+Age	[Range(15,100)]
+Id	[Key]
+
+Kom ihåg! Nu har vi ändrat på vår databas!
+Då måste vi köra en ny add-migration.. .tex:
+add-migration "Added attributes to Name & Age"
+
+När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
+	dbContext.Database.Migrate();
+
+
+** **************************************************************************************
+Lägg till en kolumn
+** **************************************************************************************
+10: Vi lägger till en kolumn i 'Person' classen. tex:
+ShoeSize	[Range(1,60)]
+
+Kom ihåg! Nu har vi ändrat på vår databas!
+Då måste vi köra en ny add-migration.. .tex:
+add-migration "Added ShoeSize to person"
+
+När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
+	dbContext.Database.Migrate();
+
+
+** **************************************************************************************
+Seed data
+** **************************************************************************************
 
 
 
