@@ -19,6 +19,8 @@ namespace EFCoreCodeFirstTogether.Data
         
         [Range(15,100)]
         public int Age { get; set; }
+
+        public County County { get; set; }
         public List<Invoice> Invoices { get; set; } = new List<Invoice>();
 
         [Range(1,60)]

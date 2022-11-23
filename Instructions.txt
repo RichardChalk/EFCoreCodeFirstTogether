@@ -90,6 +90,25 @@ add-migration "Added County table"
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
 
+INFO: Vi skulle kunna tom. ändra namnet på databasen (tex. 'InvoiceVersion2') i appsettings.json och spara 
+allt till en ny databas. Inclusive alla vår migrations!
+
+
+** **************************************************************************************
+OH NO!!!Vi glömde koppla 'County' till vår 'Person'
+** **************************************************************************************
+12: Vi vill koppla varje 'Person' till en 'County'. tex:
+	public County County { get; set; }
+
+Kom ihåg! Nu har vi ändrat på vår databas!
+Då måste vi köra en ny add-migration.. .tex:
+add-migration "Connected Person to County"
+
+När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
+	dbContext.Database.Migrate();
+
+INFO: Rita ut en databas diagram från SMMS
+
 
 ** **************************************************************************************
 Seed data
