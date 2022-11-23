@@ -73,10 +73,16 @@ namespace EFCoreCodeFirstTogether
             // READ READ READ READ READ READ READ READ READ READ READ READ READ READ
             using (var dbContext = new ApplicationDbContext(options.Options))
             {
-                foreach (var person in dbContext.Person)
+                foreach (var person in dbContext.Person.Include(c=>c.County))
                 {
                     Console.WriteLine($"Namn: {person.Name}");
                     Console.WriteLine($"Ålder: {person.Age}");
+
+                    if (person.County != null)
+                    {
+                        Console.WriteLine($"County kontakperson: {person.County.ContactPerson}");
+                    }
+                    
                     Console.WriteLine("====================");
                 }
             }

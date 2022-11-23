@@ -144,6 +144,8 @@ OBS: Även om du skulle av misstag ta bort data i County
 ** **************************************************************************************
 16: Vi ger användaren möjlighet att se alla personer som finns i vår databas
 
+17: Hmmm varför ser inte jag någon information i 'County'?
+Jag måste nog köra INCLUDE för att få se datat....
 
 
 
