@@ -19,36 +19,18 @@ namespace EFCoreCodeFirstTogether
 
             var sel = MainMenu.ShowMenu();
 
-
-            // 15: CREATE CREATE CREATE CREATE CREATE CREATE CREATE CREATE CREATE
-            Console.WriteLine("(C)REATE en ny person");
-            Console.WriteLine("=====================");
-
-            Console.WriteLine("Ange namn: ");
-            var nameInput = Console.ReadLine();
-
-            Console.WriteLine("Ange ålder: ");
-            var ageInput = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Ange skostorlek: ");
-            var shoeSizeInput = Convert.ToInt32(Console.ReadLine());
-
-            foreach (var county in dbContext.County)
+            switch (sel)
             {
-                Console.WriteLine($"{county.Id} - {county.Name}");
+                case 1:
+                    {
+                        var action = new Create(dbContext);
+                        action.Run();
+                        break;
+                    }
+
+                default:
+                    break;
             }
-            Console.WriteLine("Ange Id på County");
-            var countyId = Convert.ToInt32(Console.ReadLine());
-            var countyInput = dbContext.County.First(c => c.Id == countyId);
-
-            dbContext.Person.Add(new Person
-            {
-                Age = ageInput,
-                Name = nameInput,
-                ShoeSize = shoeSizeInput,
-                County = countyInput
-            });
-            dbContext.SaveChanges();
 
             // 16: READ READ READ READ READ READ READ READ READ READ READ READ READ READ
             Console.WriteLine("(R)EAD alla personer");
