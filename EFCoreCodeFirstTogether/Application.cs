@@ -27,26 +27,15 @@ namespace EFCoreCodeFirstTogether
                         action.Run();
                         break;
                     }
+                case 2:
+                    {
+                        var action = new Read(dbContext);
+                        action.Run();
+                        break;
+                    }
 
                 default:
                     break;
-            }
-
-            // 16: READ READ READ READ READ READ READ READ READ READ READ READ READ READ
-            Console.WriteLine("(R)EAD alla personer");
-            Console.WriteLine("=====================");
-
-            foreach (var person in dbContext.Person.Include(c => c.County))
-            {
-                Console.WriteLine($"Namn: {person.Name}");
-                Console.WriteLine($"Ålder: {person.Age}");
-
-                if (person.County != null)
-                {
-                    Console.WriteLine($"County kontakperson: {person.County.ContactPerson}");
-                }
-
-                Console.WriteLine("====================");
             }
 
             // 18: UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE
