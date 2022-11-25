@@ -161,7 +161,7 @@ Jag måste nog köra INCLUDE för att få se datat....
 
 
 ** **************************************************************************************
-Refactoring
+Refactoring - ÖVNING!!
 ** **************************************************************************************
 20: Hmmm det är något konstigt i min kod.
 Användaren har inte möjlighet att välja vad de vill göra!
@@ -187,6 +187,8 @@ Controllers =>
 		Read
 		Update
 		Delete
+
+D: Gör en UML diagram av dina klasser nu när du har refactored.
 
 
 
