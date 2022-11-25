@@ -17,6 +17,8 @@ namespace EFCoreCodeFirstTogether
             var buildApp = new Build();
             var dbContext = buildApp.BuildApp();
 
+            var sel = MainMenu.ShowMenu();
+
 
             // 15: CREATE CREATE CREATE CREATE CREATE CREATE CREATE CREATE CREATE
             Console.WriteLine("(C)REATE en ny person");
