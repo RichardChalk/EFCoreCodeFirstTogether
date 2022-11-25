@@ -45,9 +45,48 @@ namespace EFCoreCodeFirstTogether
                         action.Run();
                         break;
                     }
+                case 0:
+                    {
+                        break;
+                    }
 
                 default:
                     break;
+            }
+
+            // TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI
+            // TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI
+            // TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI
+            // TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI TEORI
+
+            // POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM
+            // POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM
+            // POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM
+            // POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM POLYMORPHISM
+
+            // Eftersom ALLA mina Actions tillhör Interface 'ICRUD' 
+            // ... kan jag skapa en lista som innehåller alla 4 actions
+            List<ICrud> actions = new List<ICrud>();
+
+            var c = new Create(dbContext);
+            var r = new Read(dbContext);
+            var u = new Update(dbContext);
+            var d = new Delete(dbContext);
+
+            actions.Add(c);
+            actions.Add(r);
+            actions.Add(u);
+            actions.Add(d);
+
+            foreach (var action in actions)
+            {
+                // Nu kan jag loopar igenom alla mina actions om jag vill
+                // Oavsett om det är en CREATE, READ, UPDATE eller DELTER klass.
+                // varje gång jag naropar metoden Run() så väljs den korrekta metoden 
+                // beroende på vad det är för klass :)
+                
+                // tex:
+                // action.Run();
             }
         }
     }
