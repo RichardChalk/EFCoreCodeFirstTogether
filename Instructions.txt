@@ -166,19 +166,18 @@ Refactoring - ÖVNING!!
 20: Hmmm det är något konstigt i min kod.
 Användaren har inte möjlighet att välja vad de vill göra!
 
-A: Vi behöver någon form av meny som anropar varje del (C R U D) beroende på vad användaren väljer.
+Refactoring01 - Vi flyttar ut all kod som bygger databasen till en ny klass. (Skapa en mapp som heter "Controllers")
+Controllers =>
+		Build
 
-B: Då behöver vi säkert lägger de olika delar i varsin metod()? tex. 
-	CreatePerson()
-	ReadPersons()
-	UpdatePerson()
-	DeletePerson()
+Refactoring02 - Vi behöver någon form av meny som anropar varje del (C R U D) beroende på vad användaren väljer.
+Controllers =>
+		Build
+		Main Menu
 
-C: SRP!!! 
+Refactoring03, 04, 05 - SRP!!! 
 Vår Application class gör väldigt mycket just nu.
 Vi kanske ska splittra på det lite och lägger det i flera klasser.
-Det vore smart om de fanns i en ny mapp också...
-Undrar om vi kan kalla mappen för Controllers. tex.
 
 Controllers =>
 		Build
@@ -188,7 +187,7 @@ Controllers =>
 		Update
 		Delete
 
-D: Gör en UML diagram av dina klasser nu när du har refactored.
+Till slut gör en UML diagram av dina klasser nu när du har refactored.
 
 
 
