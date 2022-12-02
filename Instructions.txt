@@ -164,22 +164,29 @@ Jag måste nog köra INCLUDE för att få se datat....
 Refactoring
 ** **************************************************************************************
 20: Hmmm det är något konstigt i min kod.
-Användaren har inte möjlighet att välja vad de vill göra!
 
-A: Vi behöver någon form av meny som anropar varje del (C R U D) beroende på vad användaren väljer.
 
-B: Då behöver vi säkert lägger de olika delar i varsin metod()? tex. 
-	CreatePerson()
-	ReadPersons()
-	UpdatePerson()
-	DeletePerson()
-
-C: SRP!!! 
+Refactoring01 - : SRP!!! 
 Vår Application class gör väldigt mycket just nu.
 Vi kanske ska splittra på det lite och lägger det i flera klasser.
 Det vore smart om de fanns i en ny mapp också...
 Undrar om vi kan kalla mappen för Controllers. tex.
 
+Controllers =>
+		Build
+
+Vi skapar en ny klass som heter Build och flyttar all kod som bygger databasen dit.
+
+
+Refactoring02 - Användaren har inte möjlighet att välja vad de vill göra!
+Vi behöver någon form av meny som anropar varje del (C R U D) beroende på vad användaren väljer.
+
+Controllers =>
+		Build
+		Main Menu
+
+
+Till slut kan vi skapa klasser för alla CRUD operationer
 Controllers =>
 		Build
 		Main Menu
