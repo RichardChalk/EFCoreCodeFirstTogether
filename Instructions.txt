@@ -186,7 +186,7 @@ Controllers =>
 		Main Menu
 
 
-Till slut kan vi skapa klasser för alla CRUD operationer
+Refactoring 03,04,05 - Till slut kan vi skapa klasser för alla CRUD operationer
 Controllers =>
 		Build
 		Main Menu
