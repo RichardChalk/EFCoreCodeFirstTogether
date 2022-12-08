@@ -13,7 +13,8 @@ Standard inställningar
 5: Create 'Data' folder. Create classes.
 	1. Person (obs:Exkl. Annotations & 'ShoeSize')
 	2. Invoice
-6: Create en ny DBContext class (boiler plate code). I Main create options & connectionstring variables (boiler plate code).
+6: Create en ny DBContext class (boiler plate code) inklusive alla DBSet<> som behövs. 
+	I Main create options & connectionstring variables (boiler plate code).
 	var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 	var connectionString = config.GetConnectionString("DefaultConnection");
 	options.UseSqlServer(connectionString);
@@ -59,7 +60,7 @@ Best practise
 	
 	using DeleteMe;
 
-	// 8: Vill vill lämna 'Main' static class och jobbar i vår egen class som heter 'Application'
+	// 8: Vi vill lämna 'Main' static class och jobbar i vår egen class som heter 'Application'
 	var app = new Application();
 	app.Run();
 
@@ -140,6 +141,9 @@ När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare
 
 INFO: Vi skulle kunna tom. ändra namnet på databasen (tex. 'InvoiceVersion2') i appsettings.json och spara 
 allt till en ny databas. Inclusive alla vår migrations!
+
+OBS: En konstighet... varje gång du kör en Migration måste du ha din connectionstring
+i din DBContext!!! Annars blir det error :(
 
 
 ** **************************************************************************************
