@@ -18,13 +18,14 @@ Standard inställningar
 	var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 	var connectionString = config.GetConnectionString("DefaultConnection");
 	options.UseSqlServer(connectionString);
-7a: Kör i console add-migration "Initial migration"
+7a: 	Lägg till metoden OnConfiguring() i DbContext filen (uppdatera databasnamnet!)
+	Kör i console add-migration "Initial migration"
 7b: I Main migrate DbSets to SQL tabeller
 	using (var dbContext = new ApplicationDbContext(options.Options))
 	{
 	    dbContext.Database.Migrate();
 	}
-
+Lägg också till en ny constructor i din DbContext klass som inkluderar Options som en parameter
 
 ** **************************************************************************************
 Best practise
@@ -129,9 +130,6 @@ Lägg till en ny tabell
 Lägg till 'County' som en DbSet<> i din dbcontext
 	public DbSet<County> County { get; set; }
 
-din Person klass ska använda av County klassen. Lägg till denna kod i Person
-	public County County { get; set; }
-
 Kom ihåg! Nu har vi ändrat på vår databas!
 Då måste vi köra en ny add-migration.. .tex:
 add-migration "Added County table"
@@ -182,7 +180,7 @@ Till vår nya metod I DataInitializer klassen
 Ändra using till denna kod i Application.cs metod Run()
 	using (var dbContext = new ApplicationDbContext(options.Options))
 	{
-		var dataInitiaizer = new DatainItializer();
+		var dataInitiaizer = new DataInitializer();
 		dataInitiaizer.MigrateAndSeed(dbContext);
 
 		// Migrate har flyttats till dataInitializer class (BEST PRACTISE)
@@ -208,7 +206,7 @@ OBS: Även om du skulle av misstag ta bort data i County
 (C)REATE
 ** **************************************************************************************
 15: I Application.cs 
-Vi ger användaren möjlighet att skapa nya personer och lägger till de i databasen
+Vi ger användaren möjliget att skapa nya personer och lägger till de i databasen
 
 
 ** **************************************************************************************
