@@ -82,7 +82,7 @@ namespace EFCoreCodeFirstTogether
             {
                 // Nu kan jag loopar igenom alla mina actions om jag vill
                 // Oavsett om det är en CREATE, READ, UPDATE eller DELTER klass.
-                // varje gång jag naropar metoden Run() så väljs den korrekta metoden 
+                // varje gång jag anropar metoden Run() så väljs den korrekta metoden 
                 // beroende på vad det är för klass :)
                 
                 // tex:

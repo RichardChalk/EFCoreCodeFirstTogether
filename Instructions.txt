@@ -13,7 +13,7 @@ Standard inställningar
 5: Create 'Data' folder. Create classes.
 	1. Person (obs:Exkl. Annotations & 'ShoeSize' & 'County')
 	2. Invoice
-6: Create en ny ApplicationDBContext class (boiler plate code). (exkl. DbSet<County> & Metod OnConfiguting()) 
+6: Create en ny ApplicationDBContext class (boiler plate code). (exkl. DbSet<County>) 
    I Main create options & connectionstring variables (boiler plate code).
 	var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 	var connectionString = config.GetConnectionString("DefaultConnection");
@@ -111,6 +111,7 @@ add-migration "Added attributes to Name & Age"
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
+Titta på Person tabellen i SQL Server - Gå till Design läge
 
 
 ** **************************************************************************************
@@ -125,6 +126,7 @@ add-migration "Added ShoeSize to person"
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
+Titta på Person tabellen i SQL Server - Nu finns ShoeSize!
 
 
 ** **************************************************************************************
@@ -147,6 +149,8 @@ När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare
 
 INFO: Vi skulle kunna tom. ändra namnet på databasen (tex. 'InvoiceVersion2') i appsettings.json och spara 
 allt till en ny databas. Inclusive alla vår migrations!
+
+Titta på County tabellen i SQL Server - Woohoo!!
 
 
 ** **************************************************************************************
@@ -185,7 +189,7 @@ Till vår nya metod I DataInitializer klassen
 Ändra using till denna kod i Application.cs metod Run()
 	using (var dbContext = new ApplicationDbContext(options.Options))
 	{
-		var dataInitiaizer = new DatainItializer();
+		var dataInitiaizer = new DataInitializer();
 		dataInitiaizer.MigrateAndSeed(dbContext);
 
 		// Migrate har flyttats till dataInitializer class (BEST PRACTISE)
@@ -220,8 +224,10 @@ Vi ger användaren möjlighet att skapa nya personer och lägger till de i datab
 16:  I Application.cs 
 Vi ger användaren möjlighet att se alla personer som finns i vår databas
 
-17: Hmmm varför ser inte jag någon information i 'County'?
-Jag måste nog köra INCLUDE för att få se datat....
+17a: Sätt en breakpoint på Read koden... varför är County null i min person (i foreach loopen)
+
+Hmmm varför ser inte jag någon information i 'County'?
+17b: Jag måste nog köra INCLUDE för att få se datat....
 
 
 ** **************************************************************************************
@@ -243,6 +249,11 @@ Refactoring
 ** **************************************************************************************
 20: Hmmm det är något konstigt i min kod.
 
+
+ÖVNING!!!
+=========
+
+Nu är det er tur!
 
 Refactoring01 - : SRP!!! 
 Vår Application class gör väldigt mycket just nu.
