@@ -11,14 +11,17 @@ Standard inställningar
         var builder = new ConfigurationBuilder().AddJsonFile($"appsettings.json", true, true);
         var config = builder.Build();
 5: Create 'Data' folder. Create classes.
-	1. Person (obs:Exkl. Annotations & 'ShoeSize')
+	1. Person (obs:Exkl. Annotations & 'ShoeSize' & 'County')
 	2. Invoice
-6: Create en ny DBContext class (boiler plate code). I Main create options & connectionstring variables (boiler plate code).
+6: Create en ny ApplicationDBContext class (boiler plate code). (exkl. DbSet<County>) 
+   I Main create options & connectionstring variables (boiler plate code).
 	var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 	var connectionString = config.GetConnectionString("DefaultConnection");
 	options.UseSqlServer(connectionString);
-7a: Kör i console add-migration "Initial migration"
+7a: Kör i console 
+	add-migration "Initial migration"
 7b: I Main migrate DbSets to SQL tabeller
+    Detta kommer att skapa din databas på din lokala DBServer!!! Ta en titt!
 	using (var dbContext = new ApplicationDbContext(options.Options))
 	{
 	    dbContext.Database.Migrate();
@@ -62,6 +65,10 @@ Best practise
 	// 8: Vill vill lämna 'Main' static class och jobbar i vår egen class som heter 'Application'
 	var app = new Application();
 	app.Run();
+
+8b: Radera din databas på din SQL Server.
+8c: Kör programmet igen för att kontrollerar att allting fungerar 
+    som det ska och att din databas skapas på nytt!
 
 
 ** **************************************************************************************
