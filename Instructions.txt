@@ -1,6 +1,7 @@
 ** **************************************************************************************
 Standard inställningar
 ** **************************************************************************************
+
 1: Skapa en console app
 2: Lägg till appsettings.json. Uppdatera databas namnet (valfritt). Kom ihåg property "Copy if newer"
 3: Installera alla nuget paket (matchar version)
