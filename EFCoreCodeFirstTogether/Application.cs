@@ -15,7 +15,7 @@ namespace EFCoreCodeFirstTogether
         public void Run()
         {
             var buildApp = new Build();
-            var dbContext = buildApp.BuildApp();
+            using var dbContext = buildApp.BuildApp();
 
             var sel = MainMenu.ShowMenu();
 
