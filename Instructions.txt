@@ -10,6 +10,7 @@ Standard inställningar
 ** **************************************************************************************
 1: Skapa en console app
 2: Lägg till appsettings.json. Uppdatera databas namnet (valfritt). Kom ihåg property "Copy if newer"
+   (I vårt exempel är det OK att radera "Logging" och "AllowedHosts" sektionerna)
 
 	{
 	  "ConnectionStrings": {
@@ -36,11 +37,22 @@ Undviker onödiga kopieringar:
 Garanterar att senaste versionen används: 
 	Om du ändrar konfigurationsfilen eller någon annan resurs kopieras den automatiskt 
 	till output-mappen, så du alltid får uppdaterade inställningar.
+	
+OBS: 
+Vi anävnder ALLTID localhost! ALDRIG localdb
 
-3: Installera alla nuget paket (matchar version)
-	Microsoft.EntityFrameworkCore.SqlServer
-	Microsoft.EntityFrameworkCore.Tools
-	Microsoft.Extensions.Configuration.json
+Vad är LocalDB?
+Det är en version av SQL Server Express som inte kräver någon serverkonfiguration.
+Den används främst för att utvecklare snabbt ska kunna skapa och använda databaser direkt på sin lokala maskin.
+Den är enkel att starta och stoppa automatiskt när din applikation behöver den.
+
+Vad är Localhost?
+Detta är din fullskaliga SQL Server-instans.
+
+3: Installera alla nuget paket (matchar version) i "Package Manager Console"
+	install-package Microsoft.EntityFrameworkCore.SqlServer
+	install-package Microsoft.EntityFrameworkCore.Tools
+	install-package Microsoft.Extensions.Configuration.json
 4: Create json builder (boiler plate code) i Main()
         var builder = new ConfigurationBuilder().AddJsonFile($"appsettings.json", true, true);
         var config = builder.Build();
@@ -52,8 +64,16 @@ Garanterar att senaste versionen används:
 	var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 	var connectionString = config.GetConnectionString("DefaultConnection");
 	options.UseSqlServer(connectionString);
-7a: Kör i console 
+7a: Kör i "Package Manager Console" 
 	add-migration "Initial migration"
+	
+	Förklarning!
+	add-migration "Initial migration" i Entity Framework Core skapar en migrationsfil som 
+	beskriver hur databasen ska byggas baserat på dina C#-klasser.
+
+    Kort sagt:
+    Den jämför din kod (DbContext + modeller) med databasen och sparar skillnaden i en fil.
+	
 7b: I Main migrate DbSets to SQL tabeller!
     Detta kommer att skapa din databas på din lokala DBServer!!! Ta en titt!
     OBS: .Migrate() motsvarar update-database i konsolen!
@@ -96,7 +116,7 @@ Best practise
             }
         }
 
-	I Main lägg till denna kod (och raderar all kod som finns där nu!)
+    I Main lägg till denna kod (och raderar all kod som finns där nu!)	
 	
 	using DeleteMe;
 
@@ -140,7 +160,7 @@ INFO: Attributes hjälper oss att bestämma hur våra kolumner ska se ut (vilka 
 9: Create some attributes for our Person table columns tex.
 
 OBS: Använd [Required] om du vill garantera att databaskolumnen blir NOT NULL och samtidigt 
-     möjliggöra validering i kod.
+     möjliggöra validering i kod. I Person.cs lägg till...
 Name	[Required] [MaxLength(100)]
 Age	[Range(15,100)]
 Id	[Key]
@@ -156,8 +176,16 @@ OBS: Om man kör F5 nu blir det ERROR! Eftersom vi har ändringar i vår C# App
 BEFORE - Titta på Person tabellen i SQL Server - Gå till Design läge
 
 Kom ihåg! Nu har vi ändrat på vår databas!
-Då måste vi köra en ny add-migration.. .tex:
+Då måste vi köra en ny add-migration.. 
+I "Package Manager Console" skriv...
 	add-migration "Added attributes to Name & Age"
+	
+Vi fick en varning i "Package Manager Console"
+	"An operation was scaffolded that may result in the loss of data. Please review the migration for accuracy."
+Detta för att vi har gjort om "Name" till max 100 tecken!
+Om det fanns ett namn med FLER än 100 tecken kommer ett truncate att göras!
+
+Kolla i "Migrations" mappen! Vi har fått en ny migrations fil med våra uppdateringar!
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
@@ -173,8 +201,8 @@ Lägg till en kolumn i en befintlig tabell
 ShoeSize	[Range(1,60)]
 
 Kom ihåg! Nu har vi ändrat på vår databas!
-Då måste vi köra en ny add-migration.. .tex:
-	add-migration "Added ShoeSize to person"
+Då måste vi köra en ny add-migration i "Package Manager Console":
+add-migration "Added ShoeSize to person"
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
@@ -191,7 +219,7 @@ Lägg till 'County' som en DbSet<> i din dbcontext
 
 Kom ihåg! Nu har vi ändrat på vår databas!
 Då måste vi köra en ny add-migration.. .tex:
-	add-migration "Added County table"
+add-migration "Added County table"
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
@@ -215,7 +243,7 @@ Lägg till denna kod i Person (Cardinality - One to One)
 
 Kom ihåg! Nu har vi ändrat på vår databas!
 Då måste vi köra en ny add-migration.. .tex:
-	add-migration "Connected Person to County"
+add-migration "Connected Person to County"
 
 När vi kör vår app med F5 så kommer databasen att uppdateras. Tack vare 
 	dbContext.Database.Migrate();
@@ -233,7 +261,7 @@ Nu kan vi flytta raden i vår Application class
 	dbContext.Database.Migrate();
 Till vår nya metod I DataInitializer klassen
 OBS: Detta skapar jordgubbsland eftersom vi har inte skapat metoden SeedCountys än... det kommer :)
-	public void MigrateAndSeed(ApplicationDbContext dbContext)
+		public void MigrateAndSeed(ApplicationDbContext dbContext)
         {
             dbContext.Database.Migrate();
             SeedCountys(dbContext);
